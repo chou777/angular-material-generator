@@ -1,0 +1,100 @@
+<md-dialog aria-label="Block Editor">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Block Editor</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-font-set="material-icons"> close </md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content style="min-width:600px; max-width:800px;max-height:810px; ">
+      <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab label="Detail">
+          <md-content class="md-padding">
+            <form name="otherEditor">
+              <md-input-container class="md-block">
+                <label>Tag Name</label>
+                <input required name="tag" ng-model="block.tag">
+                <div ng-messages="otherEditor.tag.$error">
+                  <div ng-message="required">This is required.</div>
+                </div>
+              </md-input-container>
+                <md-chips
+                  ng-model="block.classes"
+                  md-separator-keys="separatorKeys"
+                  placeholder="Enter html classes"
+                  secondary-placeholder="Comma separated classes">
+                </md-chips>
+                </br>
+                </br>
+                <!-- html Id -->
+              <md-input-container class="md-block">
+                <label>Id Name</label>
+                <input name="blockId" ng-model="block.id">
+                <div ng-messages="otherEditor.blockId.$error">
+                  <div ng-message="required">This is required.</div>
+                </div>
+              </md-input-container>
+
+            </form>
+
+          </md-content>
+        </md-tab>
+        <md-tab label="Attributes">
+          <md-content class="md-padding">
+            <md-content layout="row"  ng-repeat="(key, value) in block.attr">
+              <md-input-container class="md-block">
+                <label>{{ key }}</label>
+                <input name="key" ng-model="block.attr[key]" ng-model-options="{ debounce:500 }">
+              </md-input-container>
+              <md-button class="md-fab md-mini" ng-click="removeAttribute(key)">
+                <md-icon md-font-set="material-icons"> close </md-icon>
+              </md-button>
+              <span flex></span>
+            </md-content>
+            <form name="attrsEditor" ng-submit="addAttribute.save()">
+              <md-content layout="row">
+                <md-input-container class="md-block">
+                  <label>Key</label>
+                  <input required name="key" ng-model="addAttribute.key">
+                  <div ng-messages="attrsEditor.key.$error">
+                    <div ng-message="required">This is required.</div>
+                  </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                  <label>Value</label>
+                  <input name="value" ng-model="addAttribute.value">
+                  <div ng-messages="attrsEditor.value.$error">
+                    <div ng-message="required">This is required.</div>
+                  </div>
+                </md-input-container>
+                <md-button type="submit" class="md-fab md-mini md-primary" ng-click="addAttribute.save()">
+                  <md-icon md-font-set="material-icons"> add </md-icon>
+                </md-button>
+              </md-content>
+            </form>
+          </md-content>
+        </md-tab>
+        <md-tab label="Content">
+          <md-content class="md-padding">
+            <!-- <md-input-container class="md-block"> -->
+              <label>Html Content</label><br>
+
+              <textarea class="hg-content-textarea" ng-model="block.content" rows="10"  ng-model-options="{ debounce:1000 }"></textarea>
+            <!-- </md-input-container> -->
+            <md-content>
+              <div hg-block-content="{{ block.content }}"></div>
+            </md-content>
+          </md-content>
+        </md-tab>
+      </md-tabs>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="cancel()">Cancel</md-button>
+      <md-button ng-click="save('useful')">
+        Save
+      </md-button>
+    </md-dialog-actions>
+</md-dialog>

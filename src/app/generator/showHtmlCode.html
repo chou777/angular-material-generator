@@ -1,0 +1,23 @@
+<md-dialog aria-label="Block Editor">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Block Editor</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-font-set="material-icons"> close </md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content style="min-width:600px; max-width:800px;max-height:810px; ">
+      <md-content layout-padding>
+        <textarea style="width: 100%; height: 400px" ng-model="htmlCode"></textarea>
+      </md-content>
+
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="cancel()">Cancel</md-button>
+        Save
+      </md-button>
+    </md-dialog-actions>
+</md-dialog>

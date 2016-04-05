@@ -1,0 +1,21 @@
+<div layout="column" layout-fill>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <span>Angular Material Layout Generator</span>
+            <!-- fill up the space between left and right area -->
+            <span flex></span>
+            <md-button aria-label="html mode" ng-click="generator.showHtml(generator.templatesData)">
+                Html
+            </md-button>
+            <md-button aria-label="Setting mode" ng-class="generator.isEdit ? 'on-edit-mode' : 'on-preview-mode'" ng-click="generator.isEdit = !generator.isEdit">
+                <md-icon md-font-set="material-icons"> settings </md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-content>
+        <hg-template ng-class="generator.isEdit ? 'is-edit-mode' : ''" template-data="generator.templatesData"></hg-template>
+    </md-content>
+    <div>
+    </div>
+</div>
+<!-- {{ generator.templatesData | json }} -->

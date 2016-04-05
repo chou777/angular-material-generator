@@ -1,0 +1,40 @@
+.hg-block
+  position: relative
+  display: block
+
+.is-edit-mode
+  .hg-block
+    border: 1px solid #ddd
+    margin-bottom: 10px
+    padding: 50px 10px 10px 10px
+  .dom, .block-buttons
+    display: block
+
+.hg-block-wrap
+  position: relative
+  min-height: 40px
+  height: 100%
+  margin: 0 5px
+
+.block-buttons
+  position: absolute
+  top: 0px
+  right: 0px
+  display: none
+  .material-icons
+    font-size: 24px
+
+.inline-plugin
+  position: absolute
+
+.dom
+  display: none
+
+[layout=row], [layout=column]
+  display: flex !important
+
+
+// hg block editor
+.hg-content-textarea
+  overflow: auto
+  width: 100%

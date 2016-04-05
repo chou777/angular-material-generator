@@ -1,0 +1,34 @@
+<span class="inline-plugin" hg-attr="block.blockData.attr"></span>
+<span class="dom" style="position: absolute; top: 5px; left: 1px">
+    <
+    <span>{{ block.blockData.tag }}</span>
+    <span ng-if="block.blockData.id">id="{{ block.blockData.id }}"</span>
+    <span ng-if="block.blockData.classes.length">class="
+        <span ng-repeat="class in block.blockData.classes">{{ class }} </span>
+        "
+    </span>
+    >
+</span>
+
+<div hg-block-content="{{ block.blockData.content }}"></div>
+
+<section class="block-buttons">
+    <md-button class="md-icon-button md-ink-ripple" ng-click="block.showEditorBlock($event, block.index)">
+        <md-icon md-font-set="material-icons"> settings </md-icon>
+    </md-button>
+    <md-button class="md-icon-button md-ink-ripple" ng-click="block.showAddBlock($event, block.index)">
+        <md-icon md-font-set="material-icons"> add_box </md-icon>
+    </md-button>
+    <md-button class="md-icon-button md-ink-ripple" ng-click="block.showRemoveBlockConfirm($event, block.index)">
+        <md-icon md-font-set="material-icons"> delete </md-icon>
+    </md-button>
+    <md-button class="md-icon-button md-ink-ripple" ng-click="block.showCopyBlockConfirm($event, block.index, block.blockData)">
+        <md-icon md-font-set="material-icons"> content_copy </md-icon>
+    </md-button>
+<!--     <md-button class="md-icon-button md-ink-ripple" ng-click="block.showAddLayout($event, block.index)">
+        <md-icon md-font-set="material-icons"> view_quilt </md-icon>
+    </md-icon> -->
+    </md-button>
+</section>
+<hg-block block-data="block" index="$index" ng-repeat="block in block.blockData.blocks track by $index">
+</hg-block>

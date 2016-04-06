@@ -2,7 +2,7 @@ export class GeneratorController {
   constructor ($timeout, $scope, $log, $rootScope, templateService, $mdDialog, $mdMedia) {
     'ngInject';
     this.tamplateService = templateService;
-    this.templatesData =  {"tag": "div", "id": "", "classes": [ "page-wrapper" ]};
+    this.templatesData =  {"tag": "div", "id": "", "classes": [ "page-wrapper" ], "blocks": [], attr: {}};
     this.isEdit = true;
     this.htmlCode = '';
     var useFullScreen = ($mdMedia('xs'));
